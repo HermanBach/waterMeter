@@ -1,14 +1,19 @@
 ﻿@page
-@model IndexModel
+@model waterMeter.Pages.Apartments.IndexModel
+
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Показания счётчиков";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Меню</h1>
-    <p><a href="https://localhost:7001/Apartments">Квартиры</a>.</p>
-    <p><a href="https://localhost:7001/Meters">Счётчики</a>.</p>
-    <p><a href="https://localhost:7001/MetersDatas">Показания</a>.</p>
-    <p><a href="https://localhost:7001/MeterReplacementHistorys">История замены</a>.</p>
-    
-</div>
+<h1>Список квартир</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Apartment[0].Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
