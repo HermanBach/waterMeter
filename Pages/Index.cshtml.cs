@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using waterMeter.Models;
 
 namespace waterMeter.Pages
 {
@@ -11,6 +13,8 @@ namespace waterMeter.Pages
         {
             _logger = logger;
         }
+
+        public IList<Apartment> Apartment { get; set; }
 
         public void OnGet()
         {

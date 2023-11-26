@@ -16,4 +16,14 @@
             <th></th>
         </tr>
     </thead>
+    <tbody>
+        @foreach (var item in Model.Apartment)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

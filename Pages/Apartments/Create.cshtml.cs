@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using waterMeter.Data;
 using waterMeter.Models;
 
 namespace waterMeter.Pages.Apartments
 {
-    public class CreateModel : PageModel
+    public class CreateModel : MeterPageModel
     {
         private readonly waterMeter.Data.waterMeterContext _context;
 
@@ -21,25 +22,25 @@ namespace waterMeter.Pages.Apartments
 
         public IActionResult OnGet()
         {
+            MetersDropDownList(_context);
             return Page();
         }
 
         [BindProperty]
-        public Apartment Apartment { get; set; } = default!;
-        
+        public Apartment Apartment { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Apartment == null || Apartment == null)
+
+            var emptyApartment = new Apartment();
+
+            await TryUpdateModelAsync<Apartment>(emptyApartment, "apartment",
+                s => s.Name, s => s.Meter);
             {
-                return Page();
+                _context.Apartment.Add(emptyApartment);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            _context.Apartment.Add(Apartment);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
         }
     }
 }

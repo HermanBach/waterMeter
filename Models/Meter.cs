@@ -11,7 +11,7 @@ namespace waterMeter.Models
         /// <summary>
         /// Заводской номер счетчика
         /// </summary>
-        public required string FactoryNumber { get; set; }
+        public string FactoryNumber { get; set; }
         /// <summary>
         /// Дата последней поверки
         /// </summary>

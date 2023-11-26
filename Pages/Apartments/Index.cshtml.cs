@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using waterMeter.Data;
 using waterMeter.Models;
 
 namespace waterMeter.Pages.Apartments
@@ -19,7 +13,7 @@ namespace waterMeter.Pages.Apartments
             _context = context;
         }
 
-        public IList<Apartment> Apartment { get;set; } = default!;
+        public IList<Apartment> Apartment { get;set; }
 
         public async Task OnGetAsync()
         {

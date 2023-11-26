@@ -16,15 +16,21 @@
             <th>
                 @Html.DisplayNameFor(model => model.Apartment[0].Name)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apartment[0].Meter.FactoryNumber)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Apartment) {
+        @foreach (var item in Model.Apartment) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Meter.FactoryNumber)
+                </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
