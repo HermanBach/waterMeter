@@ -2,28 +2,24 @@
 @model waterMeter.Pages.Apartments.IndexModel
 
 @{
-    ViewData["Title"] = "Показания счётчиков";
+    ViewData["Title"] = "Задание";
 }
 
-<h1>Список квартир</h1>
+<h1>Задание</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Apartment[0].Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Apartment)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<p>
+Разработать веб-приложение с применением ASP.NET MVC (интерфейс и его красота не важна),
+которое будет обеспечивать следующие функции по работе с данными:
+</p>
+<tr>
+    <td>
+        Просмотр списка всех квартир с показаниями, актуальными на сегодня. Будет плюсом применение
+        фильтров (по дому/по улице).
+    </td>
+    <td>
+        Вывод списка счетчиков для выбранного дома, для которых требуется поверка.
+    </td>
+    <td>
+        Ввод показаний для счетчика в квартире (показания не должны убывать).
+    </td>
+</tr>

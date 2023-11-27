@@ -6,21 +6,27 @@ namespace waterMeter.Pages.Apartments
 {
     public class IndexModel : PageModel
     {
-        private readonly waterMeter.Data.waterMeterContext _context;
+        private readonly Data.waterMeterContext _context;
 
-        public IndexModel(waterMeter.Data.waterMeterContext context)
+        public IndexModel(Data.waterMeterContext context)
         {
             _context = context;
         }
 
-        public IList<Apartment> Apartment { get;set; }
+        public IList<Meter> Meters { get; set; }
+        public IList<Apartment> Apartments { get;set; }
+        public IList<MetersData> MetersDatas { get; set; }
 
         public async Task OnGetAsync()
         {
-            if (_context.Apartment != null)
+            if (_context.Apartment == null)
             {
-                Apartment = await _context.Apartment.ToListAsync();
+                return;
             }
+
+            Meters = await _context.Meter.ToListAsync();
+            Apartments = await _context.Apartment.ToListAsync();
+            MetersDatas = await _context.MetersData.ToListAsync();
         }
     }
 }

@@ -13,9 +13,9 @@ namespace waterMeter.Pages.Apartments
 {
     public class CreateModel : MeterPageModel
     {
-        private readonly waterMeter.Data.waterMeterContext _context;
+        private readonly Data.waterMeterContext _context;
 
-        public CreateModel(waterMeter.Data.waterMeterContext context)
+        public CreateModel(Data.waterMeterContext context)
         {
             _context = context;
         }

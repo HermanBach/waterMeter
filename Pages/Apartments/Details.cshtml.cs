@@ -5,24 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using waterMeter.Data;
 using waterMeter.Models;
 
 namespace waterMeter.Pages.Apartments
 {
     public class DetailsModel : PageModel
     {
-        private readonly waterMeter.Data.waterMeterContext _context;
+        private readonly Data.waterMeterContext _context;
 
-        public DetailsModel(waterMeter.Data.waterMeterContext context)
+        public DetailsModel(Data.waterMeterContext context)
         {
             _context = context;
         }
-
-      public Apartment Apartment { get; set; } = default!; 
+        
+        public List<Meter> Meters { get; set; }
+        public Apartment Apartment { get; set; } = default!;
+        public List<MetersData> MetersDatas { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            Meters = await _context.Meter.ToListAsync();
+
             if (id == null || _context.Apartment == null)
             {
                 return NotFound();
@@ -33,10 +36,11 @@ namespace waterMeter.Pages.Apartments
             {
                 return NotFound();
             }
-            else 
-            {
-                Apartment = apartment;
-            }
+
+            Apartment = apartment;
+            MetersDatas = await _context.MetersData.Where(s => s.Meter.Id == Apartment.Meter.Id)
+                .ToListAsync();
+
             return Page();
         }
     }
