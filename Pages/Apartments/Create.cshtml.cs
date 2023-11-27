@@ -31,16 +31,11 @@ namespace waterMeter.Pages.Apartments
 
         public async Task<IActionResult> OnPostAsync()
         {
+            _context.Attach(Apartment);
+            _context.Apartment.Add(Apartment);
+            await _context.SaveChangesAsync();
+            return RedirectToPage("./Index");
 
-            var emptyApartment = new Apartment();
-
-            await TryUpdateModelAsync<Apartment>(emptyApartment, "apartment",
-                s => s.Name, s => s.Meter);
-            {
-                _context.Apartment.Add(emptyApartment);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
-            }
         }
     }
 }
