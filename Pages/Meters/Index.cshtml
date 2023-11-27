@@ -5,22 +5,22 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h3>Список счётчиков</h3>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Добавить счётчик</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Meter[0].FactoryNumber)
+                Заводской номер
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Meter[0].LastVerification)
+                Дата последней поверки
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Meter[0].NextVerification)
+                Дата следующей поверки
             </th>
             <th></th>
         </tr>
@@ -38,9 +38,8 @@
                 @Html.DisplayFor(modelItem => item.NextVerification)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a>
+                <a asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
             </td>
         </tr>
 }
