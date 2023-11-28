@@ -30,12 +30,12 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Meter.Id)
+                    @Html.DisplayFor(modelItem => Model.ActualDatas[item.Meter.Id])
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Изменить</a>
-                <a asp-page="./Details" asp-route-id="@item.Id">Все показания</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Удалить квартиру</a>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Изменить</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Все показания</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Удалить квартиру</a> |
                 </td>
             </tr>
         }
