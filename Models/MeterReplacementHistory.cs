@@ -18,8 +18,12 @@ namespace waterMeter.Models
         /// </summary>
         public double? Value { get; set; }
         /// <summary>
-        /// Счётчик, на который заменили
+        /// Старый счётчик
         /// </summary>
-        public Meter? Meter { get; set; }
+        public Meter? OldMeter { get; set; }
+        /// <summary>
+        /// Новый счётчик
+        /// </summary>
+        public Meter? NewMeter { get; set; }
     }
 }

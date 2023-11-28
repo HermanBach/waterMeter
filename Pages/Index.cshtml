@@ -5,21 +5,7 @@
     ViewData["Title"] = "Задание";
 }
 
-<h1>Задание</h1>
-
-<p>
-Разработать веб-приложение с применением ASP.NET MVC (интерфейс и его красота не важна),
-которое будет обеспечивать следующие функции по работе с данными:
-</p>
-<tr>
-    <td>
-        Просмотр списка всех квартир с показаниями, актуальными на сегодня. Будет плюсом применение
-        фильтров (по дому/по улице).
-    </td>
-    <td>
-        Вывод списка счетчиков для выбранного дома, для которых требуется поверка.
-    </td>
-    <td>
-        Ввод показаний для счетчика в квартире (показания не должны убывать).
-    </td>
-</tr>
+<a class="nav-link text-dark" asp-area="" asp-page="./Apartments/Index">Показания по квартирам</a>
+<a class="nav-link text-dark" asp-area="" asp-page="./Meters/Index">Список счётчиков</a>
+<a class="nav-link text-dark" asp-area="" asp-page="./MetersWithExpiredVerification/Index">Счётчики с истёкшей поверкой</a>
+<a class="nav-link text-dark" asp-area="" asp-page="./MeterReplacementHistorys/Index">История замены счётчиков</a>

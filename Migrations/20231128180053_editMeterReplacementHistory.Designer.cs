@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using waterMeter.Data;
 
@@ -11,9 +12,11 @@ using waterMeter.Data;
 namespace waterMeter.Migrations
 {
     [DbContext(typeof(waterMeterContext))]
-    partial class waterMeterContextModelSnapshot : ModelSnapshot
+    [Migration("20231128180053_editMeterReplacementHistory")]
+    partial class editMeterReplacementHistory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

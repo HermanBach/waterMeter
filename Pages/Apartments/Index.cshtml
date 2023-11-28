@@ -30,7 +30,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.ActualDatas[item.Meter.Id])
+                    @Model.ActualDatas[item.Meter.Id]
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Изменить</a> |

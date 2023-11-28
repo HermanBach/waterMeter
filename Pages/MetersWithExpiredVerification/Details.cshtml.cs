@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using waterMeter.Data;
 using waterMeter.Models;
 
-namespace waterMeter.Pages.MetersDatas
+namespace waterMeter.Pages.MetersWithExpiredVerification
 {
     public class DetailsModel : PageModel
     {
@@ -19,23 +19,23 @@ namespace waterMeter.Pages.MetersDatas
             _context = context;
         }
 
-      public MetersData MetersData { get; set; } = default!; 
+      public Apartment Apartment { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.MetersData == null)
+            if (id == null || _context.Apartment == null)
             {
                 return NotFound();
             }
 
-            var metersdata = await _context.MetersData.FirstOrDefaultAsync(m => m.Id == id);
-            if (metersdata == null)
+            var apartment = await _context.Apartment.FirstOrDefaultAsync(m => m.Id == id);
+            if (apartment == null)
             {
                 return NotFound();
             }
             else 
             {
-                MetersData = metersdata;
+                Apartment = apartment;
             }
             return Page();
         }

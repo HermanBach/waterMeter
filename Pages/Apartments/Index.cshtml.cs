@@ -39,7 +39,7 @@ namespace waterMeter.Pages.Apartments
             foreach (var dat in  GroupedData)
             {
                 var key = dat.Last().Meter.Id;
-                var val = dat.Last().Value.ToString();
+                var val = dat.Last().Value;
 
                 ActualDatas.Add(key, val);
             }

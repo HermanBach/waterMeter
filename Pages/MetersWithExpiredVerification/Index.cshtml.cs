@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using waterMeter.Data;
 using waterMeter.Models;
 
-namespace waterMeter.Pages.MetersDatas
+namespace waterMeter.Pages.MetersWithExpiredVerification
 {
     public class IndexModel : PageModel
     {
@@ -19,14 +19,24 @@ namespace waterMeter.Pages.MetersDatas
             _context = context;
         }
 
-        public IList<MetersData> MetersData { get;set; } = default!;
+        public IList<Apartment> Apartment { get;set; } = default!;
+        public IList<string> Houses = new List<string>();
 
         public async Task OnGetAsync()
         {
-            if (_context.MetersData != null)
+            if (_context.Apartment != null)
             {
-                MetersData = await _context.MetersData.ToListAsync();
+                Apartment = await _context.Apartment.ToListAsync();
             }
+        }
+
+        public void CompleteHouses()
+        {
+            foreach (var apartment in Apartment)
+            {
+                Houses.Add(apartment.Name);
+            }
+
         }
     }
 }
