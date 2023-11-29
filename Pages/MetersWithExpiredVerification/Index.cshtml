@@ -5,26 +5,29 @@
     ViewData["Title"] = "Index";
 }
 
-<h3>Список домов</h3>
+<h3>Список </h3>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Apartment[0].Name)
+                Адрес дома
             </th>
-            <th></th>
+            <th>
+                Счётчики с истёкшей поверкой
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Apartment) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.Id">Список счётчиков</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.DistHouses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+                <td>
+                    @Model.ExperiedMeters[item]
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
