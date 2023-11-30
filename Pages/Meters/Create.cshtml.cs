@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using waterMeter.Data;
 using waterMeter.Models;
 
 namespace waterMeter.Pages.Meters
 {
     public class CreateModel : PageModel
     {
-        private readonly waterMeter.Data.waterMeterContext _context;
+        private readonly Data.waterMeterContext _context;
 
-        public CreateModel(waterMeter.Data.waterMeterContext context)
+        public CreateModel(Data.waterMeterContext context)
         {
             _context = context;
         }
