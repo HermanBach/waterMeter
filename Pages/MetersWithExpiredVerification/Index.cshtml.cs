@@ -42,7 +42,7 @@ namespace waterMeter.Pages.MetersWithExpiredVerification
                             .Replace("/", " ")
                             .Replace(">", "")
                             .Split("<");
-                addr = String.Concat(house[1], house[2]);
+                addr = String.Concat("ул. ", house[1], "д. ", house[2]);
                 Houses.Add(addr);
                 DateTime dateTime = DateTime.Now;
                 if (apartment.Meter.NextVerification < dateTime)

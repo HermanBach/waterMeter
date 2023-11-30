@@ -17,6 +17,7 @@ namespace waterMeter.Pages.Apartments
         public IList<Apartment> Apartments { get; set; }
         public IList<MetersData> MetersDatas { get; set; }
         public Dictionary<int, object> ActualDatas = new Dictionary<int, object>();
+        public Dictionary<string, string> Address = new Dictionary<string, string>();
 
         public async Task OnGetAsync()
         {
@@ -29,13 +30,14 @@ namespace waterMeter.Pages.Apartments
             Apartments = await _context.Apartment.ToListAsync();
             MetersDatas = await _context.MetersData.ToListAsync();
             CompleteActualData();
+            CompleteApartmentsAddress();
         }
 
         public void CompleteActualData()
         {
             var GroupedData = MetersDatas.GroupBy(s => s.Meter).ToList();
 
-            foreach (var dat in  GroupedData)
+            foreach (var dat in GroupedData)
             {
                 var key = dat.Last().Meter.Id;
                 var val = dat.Last().Value;
@@ -51,5 +53,23 @@ namespace waterMeter.Pages.Apartments
                 }
             }
         }
+
+        public string GetAddress(string fullAddress)
+        {
+            string[] house = fullAddress
+            .Replace("/", " ")
+            .Replace(">", "")
+            .Split("<");
+            return String.Concat("ул. ", house[1], "д. ", house[2], "кв. ", house[3]);
+        }
+
+        public void CompleteApartmentsAddress()
+        {
+            foreach (var apart in Apartments)
+            {
+                Address.Add(apart.Name, GetAddress(apart.Name));
+            }
+        }
+
     }
 }
