@@ -15,12 +15,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Apartment.Id" />
             <div class="form-group">
-                <label asp-for="Apartment.Name" class="control-label"></label>
+                @Model.Message
                 <input asp-for="Apartment.Name" class="form-control" />
                 <span asp-validation-for="Apartment.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Apartment.Meter.Id" class="control-label"></label>
+                Счётчик
                 <select asp-for="Apartment.Meter.Id" class="form-control"
                         asp-items="@Model.MetersList">
                     <option value="">-- Select Department --</option>

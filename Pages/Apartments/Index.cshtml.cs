@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json.Linq;
 using waterMeter.Models;
 
@@ -42,6 +43,14 @@ namespace waterMeter.Pages.Apartments
                 var val = dat.Last().Value;
 
                 ActualDatas.Add(key, val);
+            }
+
+            foreach (var meter in Meters)
+            {
+                if (!ActualDatas.ContainsKey(meter.Id))
+                {
+                    ActualDatas.Add(meter.Id, null);
+                }
             }
         }
     }

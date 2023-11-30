@@ -19,10 +19,11 @@ namespace waterMeter.Pages.Apartments
         {
             _context = context;
         }
-
+        public string Message { get; private set; } = "";
         public IActionResult OnGet()
         {
             MetersDropDownList(_context);
+            Message = "<Улица>/<Дом>/<Номер квартиры>";
             return Page();
         }
 
